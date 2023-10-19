@@ -12,6 +12,7 @@ def calculate_total_watch_time(folder_path):
     total_watch_time = 0
     for root, _, files in os.walk(folder_path):
         for file in files:
+            print(f"Processing file:  {file.lower()}")
             file_path = os.path.join(root, file)
             if file_path.lower().endswith(('.mp4', '.avi', '.mkv', '.mov', '.wmv', '.flv')):
                 duration = get_video_duration(file_path)
@@ -19,7 +20,8 @@ def calculate_total_watch_time(folder_path):
 
     return total_watch_time
 
-main_folder = "/home/yasantha/Videos/addiMaterials/dbms/Course"  # Replace with your folder path
+
+main_folder = input("Enter the path of the main folder: ")
 total_watch_time = calculate_total_watch_time(main_folder)
 
-print(f"Total watch time in the main folder: {total_watch_time/60} minutes")
+print(f"Total watch time in the main folder: {total_watch_time / 60} minutes")
